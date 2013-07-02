@@ -9,6 +9,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    params.permit!
     @product = Product.find(params[:id])
 
     respond_to do |format|
@@ -35,7 +36,7 @@ class ProductsController < ApplicationController
     params.permit!
     @product = Product.new(params[:product])
 
-    respond_to |format|
+    respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.'}
         format.json { render json: @product, status: :created, location: @product }
@@ -67,5 +68,6 @@ class ProductsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to products_url}
       format.json { head :no_content }
+    end
   end
 end

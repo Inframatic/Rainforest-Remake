@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
 	# attr_accesible :email, :password, :password_confirmation
-	# has_secured_password
+	has_secure_password
 	validates_presence_of :password, :on => :create
 end

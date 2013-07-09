@@ -1,7 +1,72 @@
+<!doctype html>
+<html>
+
+<head></head>
+
+<body>
 <h1>Products (<%= @products.length %>)</h1>
 <%= link_to "New Product", "/products/new" %>
+<%= link_to "Register", "/users/new" %>
 
 <%- @products.each do |product| %>
 	<p><%= product[:name] %>, <%= product[:description] %><%= product[:name] %></p>
 
 <% end %>
+<div class="productShell">
+	<div class="productBox color-blue">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small color-green">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>
+
+	<div class="productBox small">
+		<aside><h4>Text Name Here</h4></aside>
+		<img src="http://placehold.it/240x240" />
+	</div>					
+</div>
+</body>
+</html>

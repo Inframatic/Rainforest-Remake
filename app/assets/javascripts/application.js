@@ -14,3 +14,10 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function() {
+	$('.productBox').mouseenter(function(){
+		$(this).find('aside').hide("slide",{direction: 'right'});
+	}).mouseleave(function(){
+		$(this).find('aside').show("slide",{direction: 'left'});
+	});
+});

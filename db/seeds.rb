@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'faker'
+ 
+20.times do
+  Product.create!(
+    :name           => "#{Faker::Lorem.word}".titleize,
+    :description    => Faker::Lorem.sentence(3),
+    :price_in_cents => [50000, 501, 1000, 2000, 2500, 5000, 10000].sample
+  )
+end
+ 
+#User.create!(
+   :name                  => "Robbie on Rails",
+   :email                 => "ian.steffy@.com",
+   :password              => "password",
+   :password_confirmation => "password"
+)

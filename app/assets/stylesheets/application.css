@@ -1,349 +1,277 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the top of the
- * compiled file, but it's generally better to create a new file per style scope.
- *
- *= require_self
- *= require_tree .
- */
-body {
-  min-width: 960px;
+
+
+html{
+    background-color:#f5f5f5;
 }
 
-/* `Containers
-----------------------------------------------------------------------------------------------------*/
 
-.container_12 {
-  margin-left: auto;
-  margin-right: auto;
-  width: 960px;
+.content {
 }
 
-/* `Grid >> Global
-----------------------------------------------------------------------------------------------------*/
-
-.grid_1,
-.grid_2,
-.grid_3,
-.grid_4,
-.grid_5,
-.grid_6,
-.grid_7,
-.grid_8,
-.grid_9,
-.grid_10,
-.grid_11,
-.grid_12 {
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
+/*----------------------------
+    CSS3 Animated Navigation
+-----------------------------*/
+#home {
+    height: 100%;
 }
 
-.push_1, .pull_1,
-.push_2, .pull_2,
-.push_3, .pull_3,
-.push_4, .pull_4,
-.push_5, .pull_5,
-.push_6, .pull_6,
-.push_7, .pull_7,
-.push_8, .pull_8,
-.push_9, .pull_9,
-.push_10, .pull_10,
-.push_11, .pull_11 {
+.fancyNav{
+    /* Affects the UL element */
+    overflow: hidden;
+    display: inline-block;
+    
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    -moz-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    -webkit-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+}
+
+.fancyNav li{
+    /* Specifying a fallback color and we define CSS3 gradients for the major browsers: */
+    
+    background-color: #f0f0f0;
+    background-image: -webkit-gradient(linear,left top, left bottom,from(#fefefe), color-stop(0.5,#f0f0f0), color-stop(0.51, #e6e6e6));
+    background-image: -moz-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: -o-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: -ms-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    background-image: linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+    
+    border-right: 1px solid rgba(9, 9, 9, 0.125);
+    
+    /* Adding a 1px inset highlight for a more polished efect: */
+    
+    box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -moz-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    -webkit-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+    
+    position:relative;
+    
+    float: left;
+    list-style: none;
+}
+
+.fancyNav li:after{
+
+    /* This creates a pseudo element inslide each LI */ 
+    
+    content:'.';
+    text-indent:-9999px;
+    overflow:hidden;
+    position:absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    z-index:1;
+    opacity:0;
+    
+    /* Gradients! */
+    
+    background-image:-webkit-gradient(linear, left top, right top, from(rgba(168,168,168,0.5)),color-stop(0.5,rgba(168,168,168,0)), to(rgba(168,168,168,0.5)));
+    background-image:-moz-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:-o-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:-ms-linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    background-image:linear-gradient(left, rgba(168,168,168,0.5), rgba(168,168,168,0) 50%, rgba(168,168,168,0.5));
+    
+    /* Creating borders with box-shadow. Useful, as they don't affect the size of the element. */
+    
+    box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -moz-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -webkit-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+    
+    /* This will create a smooth transition for the opacity property */
+    
+    -moz-transition:0.25s all;
+    -webkit-transition:0.25s all;
+    -o-transition:0.25s all;
+    transition:0.25s all;
+}
+
+/* Treating the first LI and li:after elements separately */
+
+.fancyNav li:first-child{
+    border-radius: 4px 0 0 4px;
+}
+
+.fancyNav li:first-child:after,
+.fancyNav li.selected:first-child:after{
+    box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -moz-box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+    -webkit-box-shadow:1px 0 0 #a3a3a3,2px 0 0 #fff;
+    
+    border-radius:4px 0 0 4px;
+}
+
+.fancyNav li:last-child{
+    border-radius: 0 4px 4px 0;
+}
+
+/* Treating the last LI and li:after elements separately */
+
+.fancyNav li:last-child:after,
+.fancyNav li.selected:last-child:after{
+    box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+    -moz-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+    -webkit-box-shadow:-1px 0 0 #a3a3a3,-2px 0 0 #fff;
+    
+    border-radius:0 4px 4px 0;
+}
+
+.fancyNav li:hover:after,
+.fancyNav li.selected:after,
+.fancyNav li:target:after{
+    /* This property triggers the CSS3 transition */
+    opacity:1;
+}
+
+.fancyNav:hover li.selected:after,
+.fancyNav:hover li:target:after{
+    /* Hides the targeted li when we are hovering on the UL */
+    opacity:0;
+}
+
+.fancyNav li.selected:hover:after,
+.fancyNav li:target:hover:after{
+    opacity:1 !important;
+}
+
+/* Styling the anchor elements */
+
+.fancyNav li a{
+    color: #5d5d5d;
+    display: inline-block;
+    font: 20px/1 Lobster,Arial,sans-serif;
+    padding: 12px 35px 14px;
+    position: relative;
+    text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+    z-index:2;
+    text-decoration:none !important;
+    white-space:nowrap;
+}
+
+.fancyNav a.homeIcon{
+    height: 46px;
+    padding: none;
+}
+
+#home {
+    height: 46px;
+    padding-right: none;
+}
+
+
+h1,h2{
+    color: #fff;
+    line-height: 1;
+    background-color: rgba(7,18,24,0.7);
+    font-family: 'Segoe UI Light','Segoe UI',Arial,sans-serif;
+    font-weight: normal;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+    margin-left: -446px;
+}
+
+h1{
+    font-size: 25px;
+    padding: 10px 25px 12px;
+    top: 0;
+}
+
+h2{
+    font-size: 13px;
+    padding: 4px 25px 10px;
+    top: 47px;
+}
+
+header{
+    width: 100%;
+/*    z-index: 100;*/
+   /* position:fixed;*/
+    margin:0 auto;
+}
+
+
+footer{
+    color: #BBBBBB;
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 60px 20px 0;
+    text-align: center;
+    display:block;
+}
+
+footer b{
+    color: #888888;
+    display: block;
+    font-size: 10px;
+    font-weight: normal;
+}
+
+a, a:visited {
+    text-decoration:none;
+    outline:none;
+    color:#54a6de;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+/* Slider  */
+
+/* Global */
+body { 
+  width: 90%;
+  max-width: 850px; 
+  margin: 0 auto; 
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+a:hover, a.active { background: #BADA55; }
+
+ul { 
+  padding: 0; 
+  text-align: center; 
+}
+
+/* Nav */
+nav li { display: inline-block; }
+
+nav li a {
+  display: block;
+  width: 55px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center; 
+  border-radius: 5px;
+  margin-top: 18px;
+}
+
+/* Slider */
+#slider { 
   position: relative;
+  width: 100%; 
+  overflow: hidden; 
+  color: #FFF;
 }
 
-/* `Grid >> Children (Alpha ~ First, Omega ~ Last)
-----------------------------------------------------------------------------------------------------*/
+#slider ul { position: relative; }
 
-.alpha {
-  margin-left: 0;
-}
-
-.omega {
-  margin-right: 0;
-}
-
-/* `Grid >> 12 Columns
-----------------------------------------------------------------------------------------------------*/
-
-.container_12 .grid_1 {
-  width: 60px;
-}
-
-.container_12 .grid_2 {
-  width: 140px;
-}
-
-.container_12 .grid_3 {
-  width: 220px;
-}
-
-.container_12 .grid_4 {
-  width: 300px;
-}
-
-.container_12 .grid_5 {
-  width: 380px;
-}
-
-.container_12 .grid_6 {
-  width: 460px;
-}
-
-.container_12 .grid_7 {
-  width: 540px;
-}
-
-.container_12 .grid_8 {
-  width: 620px;
-}
-
-.container_12 .grid_9 {
-  width: 700px;
-}
-
-.container_12 .grid_10 {
-  width: 780px;
-}
-
-.container_12 .grid_11 {
-  width: 860px;
-}
-
-.container_12 .grid_12 {
-  width: 940px;
-}
-
-/* `Prefix Extra Space >> 12 Columns
-----------------------------------------------------------------------------------------------------*/
-
-.container_12 .prefix_1 {
-  padding-left: 80px;
-}
-
-.container_12 .prefix_2 {
-  padding-left: 160px;
-}
-
-.container_12 .prefix_3 {
-  padding-left: 240px;
-}
-
-.container_12 .prefix_4 {
-  padding-left: 320px;
-}
-
-.container_12 .prefix_5 {
-  padding-left: 400px;
-}
-
-.container_12 .prefix_6 {
-  padding-left: 480px;
-}
-
-.container_12 .prefix_7 {
-  padding-left: 560px;
-}
-
-.container_12 .prefix_8 {
-  padding-left: 640px;
-}
-
-.container_12 .prefix_9 {
-  padding-left: 720px;
-}
-
-.container_12 .prefix_10 {
-  padding-left: 800px;
-}
-
-.container_12 .prefix_11 {
-  padding-left: 880px;
-}
-
-/* `Suffix Extra Space >> 12 Columns
-----------------------------------------------------------------------------------------------------*/
-
-.container_12 .suffix_1 {
-  padding-right: 80px;
-}
-
-.container_12 .suffix_2 {
-  padding-right: 160px;
-}
-
-.container_12 .suffix_3 {
-  padding-right: 240px;
-}
-
-.container_12 .suffix_4 {
-  padding-right: 320px;
-}
-
-.container_12 .suffix_5 {
-  padding-right: 400px;
-}
-
-.container_12 .suffix_6 {
-  padding-right: 480px;
-}
-
-.container_12 .suffix_7 {
-  padding-right: 560px;
-}
-
-.container_12 .suffix_8 {
-  padding-right: 640px;
-}
-
-.container_12 .suffix_9 {
-  padding-right: 720px;
-}
-
-.container_12 .suffix_10 {
-  padding-right: 800px;
-}
-
-.container_12 .suffix_11 {
-  padding-right: 880px;
-}
-
-/* `Push Space >> 12 Columns
-----------------------------------------------------------------------------------------------------*/
-
-.container_12 .push_1 {
-  left: 80px;
-}
-
-.container_12 .push_2 {
-  left: 160px;
-}
-
-.container_12 .push_3 {
-  left: 240px;
-}
-
-.container_12 .push_4 {
-  left: 320px;
-}
-
-.container_12 .push_5 {
-  left: 400px;
-}
-
-.container_12 .push_6 {
-  left: 480px;
-}
-
-.container_12 .push_7 {
-  left: 560px;
-}
-
-.container_12 .push_8 {
-  left: 640px;
-}
-
-.container_12 .push_9 {
-  left: 720px;
-}
-
-.container_12 .push_10 {
-  left: 800px;
-}
-
-.container_12 .push_11 {
-  left: 880px;
-}
-
-/* `Pull Space >> 12 Columns
-----------------------------------------------------------------------------------------------------*/
-
-.container_12 .pull_1 {
-  left: -80px;
-}
-
-.container_12 .pull_2 {
-  left: -160px;
-}
-
-.container_12 .pull_3 {
-  left: -240px;
-}
-
-.container_12 .pull_4 {
-  left: -320px;
-}
-
-.container_12 .pull_5 {
-  left: -400px;
-}
-
-.container_12 .pull_6 {
-  left: -480px;
-}
-
-.container_12 .pull_7 {
-  left: -560px;
-}
-
-.container_12 .pull_8 {
-  left: -640px;
-}
-
-.container_12 .pull_9 {
-  left: -720px;
-}
-
-.container_12 .pull_10 {
-  left: -800px;
-}
-
-.container_12 .pull_11 {
-  left: -880px;
-}
-
-/* `Clear Floated Elements
-----------------------------------------------------------------------------------------------------*/
-
-/* http://sonspring.com/journal/clearing-floats */
-
-.clear {
-  clear: both;
+#slider li {   
   display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
+  height: 225px;            
+  float: left; 
 }
 
-/* http://www.yuiblog.com/blog/2010/09/27/clearfix-reloaded-overflowhidden-demystified */
-
-.clearfix:before,
-.clearfix:after {
-  content: '\0020';
-  display: block;
-  overflow: hidden;
-  visibility: hidden;
-  width: 0;
-  height: 0;
-}
-
-.clearfix:after {
-  clear: both;
-}
-
-/*
-  The following zoom:1 rule is specifically for IE6 + IE7.
-  Move to separate stylesheet if invalid CSS is a problem.
-*/
-
-.clearfix {
-  zoom: 1;
+#slider li img { 
+  width: 100%; 
+  height: auto; 
 }

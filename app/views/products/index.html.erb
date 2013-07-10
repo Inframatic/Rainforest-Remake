@@ -4,7 +4,7 @@
 <head></head>
 
 <body>
-<h1>Products (<%= @products.length %>)</h1>
+<!-- <h1>Products (<%= @products.length %>)</h1> -->
 <%= link_to "New Product", "/products/new" %>
 <%= link_to "Register", "/users/new" %>
 
@@ -12,6 +12,14 @@
 	<p><%= product[:name] %>, <%= product[:description] %><%= product[:name] %></p>
 
 <% end %>
+
+			<p class="userinfo">
+				<% if current_user %>
+					Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+					<% else %>
+						<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+					<% end %>
+			</p>
 
 </body>
 </html>

@@ -15,7 +15,7 @@ require 'faker'
   )
 end
  
-#User.create!(
+User.create!(
    :name                  => "Robbie on Rails",
    :email                 => "ian.steffy@.com",
    :password              => "password",

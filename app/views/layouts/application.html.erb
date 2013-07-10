@@ -1,52 +1,40 @@
 <!DOCTYPE html>
 <html>
-	<head>
-	  <title>RainforestRemake</title>
-	  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-	  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
-	  <%= javascript_include_tag "https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" %>
-		<%= csrf_meta_tags %>
-		<link rel="stylesheet" type="text/css" href="css/960_12_col.css" />
-			<style>
-				* {
-					font-family: Arial, Verdana, sans-serif;
-					color: #665544;
-					text-align: center;}
-				#nav, #feature, .article, #footer {
-					background-color: #efefef;
-					margin-top: 20px;
-					padding: 10px 0px 5px 0px;}
-				#feature, .article {
-					height: 100px;}
-				li {
-					display: inline;
-					padding: 5px;}
-			</style>
-	</head>
+<head>
+	<meta charset="utf-8" />
 
+        <title>Rainforest Remake</title>
+					<%= stylesheet_link_tag    "application", :media => "all" %>
+					<%= javascript_include_tag "application" %>
+					<%= javascript_include_tag "http://ricostacruz.com/jquery.transit/jquery.transit.min.js" %>
+        	<!-- Lobster font from Google's Font Directory -->
+        	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Lobster" />
+</head>
 	<body>
-		<div class="container_12 clearfix">
-			<div id="header" class="grid_12">
-				<h1>Logo</h1>
-				<div id="nav">
-					<ul>
-						<li><a href="">Home</a></li>
-						<li><a href="">Products</a></li>
-						<li><a href="">Services</a></li>
-						<li><a href="">About</a></li>
-						<li><a href="">Contact</a></li>			
-						<li class="userinfo">
-							<% if current_user %>
-							Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-							<% else %>
-								<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
-							<% end %>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div id="feature" class="grid_12">
-				
+        <header>
+            <ul class="fancyNav">
+                <li id="home"><a href="#home" class="homeIcon"><img src="http://icons.mysitemyway.com/wp-content/gallery/magic-marker-icons-natural-wonders/thumbs/thumbs_115615-magic-marker-icon-natural-wonders-icon_131.png" width="36px"></a></li>
+                <li id="news"><a href="#news">Products</a></li>
+                <li id="about"><a href="#about">Sell</a></li>
+                <li id="services"><a href="#services">Buy</a></li>
+                <li id="contact"><a href="#contact">Reviews</a></li>
+                <li id="contact"><a href="#contact">
+									<%= link_to "New Product", "/products/new" %>
+                </a></li>
+            </ul>
+        </header>
+
+
+  <div class="content">
+
+
+									<% if current_user %>
+									Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+								</a></li>
+								<li id="contact"><a href="#contact">
+									<% else %>
+										<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
+									<% end %>
 		<% if flash[:notice] %>
 			<p id="notice"><%= flash[:notice] %></p>
 		<% end %>
@@ -54,30 +42,39 @@
 			<p id="alert"><%= flash[:alert] %></p>
 		<% end %>
 
-		<%= yield %>
+		<%= link_to "New Product", "/products/new" %>
+		<%= link_to "Register", "/users/new" %>
 
-			<p class="userinfo">
-				<% if current_user %>
-					Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-					<% else %>
-						<%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
-					<% end %>
-			</p>
-			</div>
-			<div class="article grid_4">
-				<p>Column One</p>
-			</div>
-			<div class="article grid_4">
-				<p>Column Two</p>
-			</div>
-			<div class="article grid_4">
-				<p>Column Three</p>
-			</div>
-			<div id="footer" class="grid_12">
-				<p>&copy; Copyright 2011</p>
-			</div>
-		</div><!-- .container_12 -->
+		<%- @products.each do |product| %>
+			<p><%= product[:name] %>, <%= product[:description] %><%= product[:name] %></p>
 
+		<% end %>
 
+			
+
+			
+	</div>
+
+	<nav>
+  <ul>
+    <li><a href="#">One</a></li>
+    <li><a href="#">Two</a></li>
+    <li><a href="#">Three</a></li>
+    <li><a href="#">Four</a></li>
+    <li><a href="#">Five</a></li>
+    <li><a href="#">Six</a></li>
+  </ul>
+</nav>
+
+<section id="slider"> 
+  <ul>
+    <li><img src="http://placekitten.com/600/400" alt="Slide One"></li>    
+    <li><img src="http://placekitten.com/600/400" alt="Slide Two"></li>
+    <li><img src="http://placekitten.com/600/400" alt="Slide Three"></li>
+    <li><img src="http://placekitten.com/600/400" alt="Slide Four"></li>
+    <li><img src="http://placekitten.com/600/400" alt="Slide Five"></li>
+    <li><img src="http://placekitten.com/600/400" alt="Slide Six"></li>
+  </ul>    
+</section>
 	</body>
 </html>

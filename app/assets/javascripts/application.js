@@ -13,11 +13,42 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
-$(document).ready(function() {
-	$('.productBox').mouseenter(function(){
-		$(this).find('aside').hide("slide",{direction: 'right'});
-	}).mouseleave(function(){
-		$(this).find('aside').show("slide",{direction: 'left'});
-	});
+
+$(document).ready(function(){
+
+	var nav = jQuery('nav li').find('a'),
+      slider = jQuery('#slider'),
+      slideWrap = slider.children('ul'),
+      slide = slideWrap.children('li'),
+      slideCount = slide.length,
+      slideWidth = 100 / slideCount;
+
+  // Dynamically set width
+  slideWrap.css({ 'width' : slideCount * 100 + '%' });
+  slide.css({ 'width' : slideWidth + '%' });
+
+  // Navigation
+  nav.first().addClass('active');
+
+  // Click function
+  nav.on('click', function(e) {
+    e.preventDefault();
+
+    var element = jQuery(this),
+        active = jQuery('a.active'),
+        activeCheck  = element.is('.active'),
+        currentPos = element.parent().index(),
+        translate = currentPos++ * -100 + '%';
+
+    if (activeCheck === false) {
+      active.removeClass('active');
+      element.addClass('active');
+      slideWrap.transition({ left: translate });
+    } 
+    else {
+      return false;
+    }
+
+  });
+
 });
